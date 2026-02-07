@@ -79,3 +79,43 @@ window.addEventListener('resize', () => {
         }
     }
 });
+
+function createFloatingHeart() {
+    const container = document.getElementById('floatingHeartsContainer');
+    if (!container) return;
+    
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    
+    const hearts = ['💕', '💗', '💖', '💝', '💓', '❤️'];
+    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    
+    const size = Math.random() * 25 + 25;
+    heart.style.fontSize = size + 'px';
+    
+    const startPosition = Math.random() * 100;
+    heart.style.left = startPosition + '%';
+    
+    const drift = (Math.random() - 0.5) * 100;
+    heart.style.setProperty('--drift', drift + 'px');
+    
+    const duration = Math.random() * 4 + 6;
+    heart.style.animationDuration = duration + 's';
+    
+    const delay = Math.random() * 2;
+    heart.style.animationDelay = delay + 's';
+    
+    container.appendChild(heart);
+    
+    setTimeout(() => {
+        heart.remove();
+    }, (duration + delay) * 1000);
+}
+
+function startFloatingHearts() {
+    setInterval(() => {
+        createFloatingHeart();
+    }, 800);
+}
+
+startFloatingHearts();

@@ -17,6 +17,45 @@ body {
     position: relative;
 }
 
+.floating-hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 24px;
+    opacity: 0;
+    animation: floatUpHeart 8s ease-in-out forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUpHeart {
+    0% {
+        bottom: -50px;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        bottom: 110vh;
+        opacity: 0;
+        transform: translateX(var(--drift)) rotate(360deg);
+    }
+}
+
 .floating-hearts {
     position: fixed;
     top: 0;
